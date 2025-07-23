@@ -17,6 +17,7 @@ app.use(express.urlencoded({
 
 //routes
 import healthRouter from "./router/health.router";
+import { routeNotFound } from "./middleware/routeNotFound.middleware";
 
 app.use("/api/v1/health", healthRouter);
 
@@ -26,5 +27,7 @@ app.get("/", (_, res: Response) => {
         message: "welcome to tally api"
     });
 });
+
+app.use(routeNotFound);
 
 export default app;
